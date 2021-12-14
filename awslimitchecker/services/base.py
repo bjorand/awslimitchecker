@@ -321,7 +321,7 @@ class _AwsService(Connectable):
         return self._cloudwatch_client
 
     def _get_cloudwatch_usage_latest(
-        self, dimensions, metric_name='ResourceCount', period=60
+        self, dimensions, metric_name='ResourceCount', period=60, stat='Average'
     ):
         """
         Given some metric dimensions, return the value of the latest data point
@@ -349,7 +349,7 @@ class _AwsService(Connectable):
                             'Dimensions': dimensions
                         },
                         'Period': period,
-                        'Stat': 'Average'
+                        'Stat': stat
                     }
                 }
             ],
